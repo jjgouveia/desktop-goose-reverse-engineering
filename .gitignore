@@ -1,0 +1,30 @@
+# Jogo original e artefatos proprietarios (nao publicar)
+GooseDesktop.exe
+GooseDesktop.exe.config
+GooseModdingAPI.dll
+MMQ.dll
+Assets/
+Pat1
+Pat2
+Pat3
+Autumn.txt
+config.ini
+
+# Codigo descompilado e build
+decompilado/
+bin/
+obj/
+*.pdb
+*.user
+.vs/
+
+# Python / Frida
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Capturas locais
+evidence/*.png
+evidence/*.jpg
+evidence/*.jpeg

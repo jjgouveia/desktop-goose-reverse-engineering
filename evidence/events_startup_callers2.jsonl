@@ -1,0 +1,21 @@
+{"ready": true, "pid": 56352, "arch": "ia32"}
+{"mci": "open \"%TEMP%\\goose-dyn\\Assets/Sound/NotEmbedded/Honk1.mp3\" type MPEGVideo alias honkPlayer"}
+{"timer_api": "timeBeginPeriod", "arg": 1, "caller": "QUARTZ.dll+0x79231"}
+{"ntSetTimerResolution_enter": {"desired_100ns": 10000, "set": 1, "caller": "KERNEL32.dll+0x683be"}}
+{"ntSetTimerResolution_leave": {"status": 0, "actual_100ns": 10000}}
+{"mci_ret": 0}
+{"mci": "open \"%TEMP%\\goose-dyn\\Assets/Sound/NotEmbedded/MudSquith.mp3\" type MPEGVideo alias assortedEnvironment"}
+{"timer_api": "timeBeginPeriod", "arg": 1, "caller": "QUARTZ.dll+0x79231"}
+{"mci_ret": 0}
+{"mci": "stop honkPlayer"}
+{"mci_ret": 0}
+{"mci": "close honkPlayer"}
+{"timer_api": "timeEndPeriod", "arg": 1, "caller": "QUARTZ.dll+0x792da"}
+{"mci_ret": 0}
+{"mci": "open \"%TEMP%\\goose-dyn\\Assets/Sound/NotEmbedded/Honk3.mp3\" type MPEGVideo alias honkPlayer"}
+{"timer_api": "timeBeginPeriod", "arg": 1, "caller": "QUARTZ.dll+0x79231"}
+{"mci_ret": 0}
+{"mci": "setaudio honkPlayer volume to 800"}
+{"mci_ret": 0}
+{"t": 1, "fps": 38, "avg_interval_ms": 15.92}
+{"t": 2, "fps": 57, "avg_interval_ms": 17.61}

@@ -1,0 +1,109 @@
+{
+  "ambiente": {
+    "os": "Windows 11",
+    "sessao": "local",
+    "processo": "GooseDesktop.exe (PE32, .NET Framework 4.5.2, WinForms/GDI+)",
+    "arquitetura_frida": "ia32 / pointerSize=4",
+    "display_ativo": "2560x1600 @ 240 Hz, escala 150%",
+    "area_logica_vista_pelo_app": "1707x1067 (janela 1707x1019)",
+    "dpi_aware": false,
+    "ferramenta": "Frida 17.24.3 (Python 3.12, venv temporario)",
+    "copia_de_teste": "%TEMP%\\opencode\\goose-dyn",
+    "config_teste": {
+      "SilenceSounds": true,
+      "Task_CanAttackMouse": false,
+      "AttackRandomly": false,
+      "EnableMods": false
+    }
+  },
+  "normal": {
+    "fps_medio": 56.43,
+    "fps_faixa": [
+      55,
+      61
+    ],
+    "intervalo_frame_ms": 17.7,
+    "sleep_ms": 9.09,
+    "paint_ms": 8.3,
+    "gap_ms": 9.61,
+    "bitblt_ms": 1.34,
+    "cpu_pct_um_nucleo": 46.9,
+    "gdi_handles": [
+      25,
+      28
+    ],
+    "user_handles": [
+      24,
+      24
+    ],
+    "fonte": "events_timing.jsonl + medicao de CPU da primeira execucao"
+  },
+  "sem_som": {
+    "fps_medio": 32.67,
+    "fps_faixa": [
+      32,
+      33
+    ],
+    "sleep_ms": 21.66,
+    "paint_ms": 8.52,
+    "gap_ms": 22.47,
+    "bitblt_ms": 1.63,
+    "fonte": "events_nosound.jsonl (Assets/Sound/NotEmbedded renomeado)"
+  },
+  "sem_som_com_timeBeginPeriod": {
+    "fps_medio": 57.0,
+    "sleep_ms": 9.17,
+    "paint_ms": 8.12,
+    "gap_ms": 9.62,
+    "bitblt_ms": 1.43
+  },
+  "timeBeginPeriod_com_som": {
+    "baseline_fps": 58.25,
+    "boosted_fps": 57.75,
+    "restored_fps": 58.5,
+    "conclusao": "sem efeito: o MCI/QUARTZ ja tinha elevado a resolucao para 1 ms"
+  },
+  "gdi_por_frame": {
+    "GdipDrawLineI": 10,
+    "GdipFillEllipseI": 5,
+    "GdipCreateFromHDC": 1,
+    "GdipDeleteGraphics": 1,
+    "BitBlt": 1,
+    "DeleteObject": 5,
+    "GdipDrawImage_qualquer": 0,
+    "GdipGraphicsClear": 0,
+    "GdipFillRectangleI": 0
+  },
+  "win32_por_frame": {
+    "SetWindowPos": 1,
+    "ClipCursor": 1,
+    "GetAsyncKeyState": 1,
+    "PeekMessageW": 3,
+    "InvalidateRect": 1,
+    "SleepEx_8ms": 1
+  },
+  "mci_timer": {
+    "sequencia": [
+      "mci open Honk1.mp3 type MPEGVideo alias honkPlayer",
+      "QUARTZ.dll+0x79231 -> timeBeginPeriod(1)",
+      "NtSetTimerResolution(desired=10000, set=1) -> actual=10000",
+      "mci open MudSquith.mp3 type MPEGVideo alias assortedEnvironment",
+      "QUARTZ.dll+0x79231 -> timeBeginPeriod(1)",
+      "HONCC: stop/close honkPlayer -> QUARTZ.dll+0x792da -> timeEndPeriod(1)",
+      "HONCC: open Honk2/3.mp3 -> QUARTZ.dll+0x79231 -> timeBeginPeriod(1)"
+    ],
+    "control_powershell": {
+      "Sleep8_antes_MCI_ms": 16.08,
+      "Sleep8_com_MCI_aberto_ms": 9.42,
+      "Sleep8_apos_fechar_MCI_ms": 14.99
+    },
+    "conclusao": "O driver MCI MPEGVideo (QUARTZ/DirectShow) eleva a resolucao do timer para 1 ms enquanto um MP3 esta aberto; o jogo nao chama timeBeginPeriod diretamente."
+  },
+  "simulacao": {
+    "ticks_por_segundo_normal": 56.43,
+    "dt_fixo": "1/120 s",
+    "tempo_simulado_por_segundo_real_normal": 0.4703,
+    "tempo_simulado_por_segundo_real_sem_som": 0.2722,
+    "observacao": "Time.time usa Stopwatch real; tarefas/pegadas usam tempo real, movimento usa dt fixo."
+  }
+}
